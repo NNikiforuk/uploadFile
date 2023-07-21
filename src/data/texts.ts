@@ -5,3 +5,4 @@ export const text_sending =
 export const header_receiving = "Lorem ipsum dolor sit amet, consectetur adipiscing";
 export const text_receiving =
 	"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse placerat justo quis.";
+
