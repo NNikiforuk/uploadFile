@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useState, useRef, useEffect } from "react";
 
 import "./Card.css";
 import {
@@ -10,6 +10,7 @@ import {
 
 const Card = ({ wantSend }: { wantSend: boolean }) => {
 	const [file, setFile] = useState<File>();
+	const drop = useRef<HTMLDivElement>(null);
 
 	const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
 		if (e.target.files) {
@@ -22,20 +23,31 @@ const Card = ({ wantSend }: { wantSend: boolean }) => {
 			return;
 		}
 
-		// 		// 👇 Uploading the file using the fetch API to the server
-		//     fetch('https://httpbin.org/post', {
-		//       method: 'POST',
-		//       body: file,
-		//       // 👇 Set headers manually for single file upload
-		//       headers: {
-		//         'content-type': file.type,
-		//         'content-length': `${file.size}`, // 👈 Headers need to be a string
-		//       },
-		//     })
-		//       .then((res) => res.json())
-		//       .then((data) => console.log(data))
-		//       .catch((err) => console.error(err));
-		//   };
+		//Fetching
+	};
+
+	useEffect(() => {
+		if (drop.current) {
+			drop.current.addEventListener("dragover", handleDragOver);
+			drop.current.addEventListener("drop", handleDrop);
+		}
+
+		return () => {
+			if (drop.current) {
+				drop.current.removeEventListener("dragover", handleDragOver);
+				drop.current.removeEventListener("drop", handleDrop);
+			}
+		};
+	}, []);
+
+	const handleDragOver = (e: DragEvent) => {
+		e.preventDefault();
+		e.stopPropagation();
+	};
+
+	const handleDrop = (e: DragEvent) => {
+		e.preventDefault();
+		e.stopPropagation();
 	};
 
 	return (
@@ -46,7 +58,7 @@ const Card = ({ wantSend }: { wantSend: boolean }) => {
 				</h1>
 				<p className="card_text">{wantSend ? text_sending : text_receiving}</p>
 			</div>
-			<div className="upload">
+			<div className="upload" ref={drop}>
 				<div className="upload_text upload_textUp">Drop the file</div>
 				<div className="upload_text">or</div>
 
@@ -54,7 +66,9 @@ const Card = ({ wantSend }: { wantSend: boolean }) => {
 					<input type="file" onChange={handleFileChange} />
 				</div>
 
-				<button className="upload_btn" onClick={handleSendClick}>Send</button>
+				<button className="upload_btn" onClick={handleSendClick}>
+					Send
+				</button>
 			</div>
 		</div>
 	);
