@@ -9,7 +9,9 @@ function App() {
 	return (
 		<div className="app">
 			<Navbar />
-			<Card wantSend={wantSend} />
+			<main className="main">
+				<Card wantSend={wantSend} />
+			</main>
 		</div>
 	);
 }

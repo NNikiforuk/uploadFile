@@ -90,7 +90,6 @@ const Card = ({ wantSend }: { wantSend: boolean }) => {
 				</h1>
 				<p className="card_text">{wantSend ? text_sending : text_receiving}</p>
 			</div>
-			{/* <div className="upload" ref={drop}> */}
 			<div className={"upload " + (dragging && "active")} ref={drop}>
 				<div className="upload_text upload_textUp">{par1}</div>
 				<div className="upload_text">{par2}</div>
