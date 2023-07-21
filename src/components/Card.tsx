@@ -13,6 +13,7 @@ const Card = ({ wantSend }: { wantSend: boolean }) => {
 	const [ifDropped, setIfDropped] = useState<boolean>(false);
 	const [par1, setPar1] = useState<string>("Drop the file");
 	const [par2, setPar2] = useState<string>("or");
+	const [dragging, setDragging] = useState<boolean>(false);
 	const drop = useRef<HTMLDivElement>(null);
 
 	const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -33,15 +34,33 @@ const Card = ({ wantSend }: { wantSend: boolean }) => {
 		if (drop.current) {
 			drop.current.addEventListener("dragover", handleDragOver);
 			drop.current.addEventListener("drop", handleDrop);
+			drop.current.addEventListener("dragenter", handleDragEnter);
+			drop.current.addEventListener("dragleave", handleDragLeave);
 		}
 
 		return () => {
 			if (drop.current) {
 				drop.current.removeEventListener("dragover", handleDragOver);
 				drop.current.removeEventListener("drop", handleDrop);
+				drop.current.removeEventListener("dragenter", handleDragEnter);
+				drop.current.removeEventListener("dragleave", handleDragLeave);
 			}
 		};
 	}, []);
+
+	const handleDragEnter = (e: DragEvent) => {
+		e.preventDefault();
+		e.stopPropagation();
+
+		setDragging(true);
+	};
+
+	const handleDragLeave = (e: DragEvent) => {
+		e.preventDefault();
+		e.stopPropagation();
+
+		setDragging(false);
+	};
 
 	const handleDragOver = (e: DragEvent) => {
 		e.preventDefault();
@@ -71,7 +90,8 @@ const Card = ({ wantSend }: { wantSend: boolean }) => {
 				</h1>
 				<p className="card_text">{wantSend ? text_sending : text_receiving}</p>
 			</div>
-			<div className="upload" ref={drop}>
+			{/* <div className="upload" ref={drop}> */}
+			<div className={"upload " + (dragging && "active")} ref={drop}>
 				<div className="upload_text upload_textUp">{par1}</div>
 				<div className="upload_text">{par2}</div>
 

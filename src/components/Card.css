@@ -61,7 +61,7 @@ input[type="file"] {
 	color: rgb(211, 224, 234);
 	display: flex;
 	padding: 7px;
-    cursor: pointer;
+	cursor: pointer;
 }
 
 input[type="file"]::file-selector-button {
@@ -81,4 +81,8 @@ input[type="file"]::file-selector-button {
 	border-radius: 15px;
 	font-weight: bold;
 	cursor: pointer;
+}
+
+.active {
+	background: rgb(40, 40, 44);
 }
