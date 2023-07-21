@@ -1,8 +1,39 @@
 .card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     background-color: rgb(38, 38, 43);
     max-width: 80%;
-    height: 200px;
     margin: 0 auto;
     margin-top: 30px;
-    border-radius: 5px;
+    border-radius: 15px;
+    padding: 5px;
+}
+
+.description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card_header {
+    line-height: 40px;
+    text-align: center;
+    font-size: 24px;
+}
+
+.card_text {
+    text-align: center;
+    margin-top: 0;
+}
+
+.upload {
+    width: 150px;
+    height: 150px;
+    border: 2px dashed rgb(211, 224, 234);
+    padding: 5px;
+    border-radius: 15px;
+    margin-bottom: 50px;
 }
