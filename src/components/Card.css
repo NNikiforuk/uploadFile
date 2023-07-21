@@ -1,0 +1,8 @@
+.card {
+    background-color: rgb(38, 38, 43);
+    max-width: 80%;
+    height: 200px;
+    margin: 0 auto;
+    margin-top: 30px;
+    border-radius: 5px;
+}
