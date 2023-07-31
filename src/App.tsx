@@ -5,13 +5,13 @@ import { useState } from "react";
 import Tabs from "./components/Tabs";
 
 function App() {
-	const [wantSend, setWantSend] = useState<boolean>(true);
+	const [wantSend, setWantSend] = useState<boolean>(false);
 
 	return (
 		<div className="app">
 			<Navbar />
 			<main className="main">
-				<Tabs wantSend={wantSend} setWantSend={setWantSend} />
+				<Tabs setWantSend={setWantSend} />
 				<Card wantSend={wantSend} />
 			</main>
 		</div>

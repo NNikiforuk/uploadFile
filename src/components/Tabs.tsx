@@ -1,16 +1,22 @@
 import { useState } from "react";
 import "./Tabs.css";
 
-const Tabs = ({
-	wantSend,
-	setWantSend,
-}: {
-	wantSend: boolean;
-	setWantSend: boolean;
-}) => {
+type Props = {
+	setWantSend: (wantSend: boolean) => void;
+};
+
+const Tabs = ({ setWantSend }: Props) => {
 	const [activeTab, setActiveTab] = useState<string>("send");
 
-	const handleTabChange = (tab: string) => {};
+	const handleTabChange = (tab: string) => {
+		if (tab === "send") {
+			setWantSend(true);
+			setActiveTab("send");
+		} else {
+			setWantSend(false);
+			setActiveTab("receive");
+		}
+	};
 
 	return (
 		<div className="tabs">
