@@ -3,10 +3,8 @@
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	background-color: rgb(38, 38, 43);
 	max-width: 80%;
 	margin: 0 auto;
-	margin-top: 30px;
 	border-radius: 15px;
 	padding: 10px;
 	background: rgb(24, 24, 26);
@@ -38,7 +36,7 @@
 	border: 2px dashed rgb(211, 224, 234);
 	padding: 5px;
 	border-radius: 15px;
-	margin-bottom: 50px;
+	margin-bottom: 30px;
 	display: flex;
 	flex-direction: column;
 }
@@ -80,6 +78,7 @@ input[type="file"]::file-selector-button {
 	padding: 10px 20px;
 	border-radius: 15px;
 	cursor: pointer;
+	box-shadow: 5px 5px 5px 0 rgb(24, 24, 26), 0px 0px 6px 0 #8880e1;
 }
 
 .active {
@@ -91,36 +90,25 @@ input[type="file"]::file-selector-button {
 		margin-top: 0;
 	}
 
+	.card_header {
+		line-height: 30px;
+	}
+
 	.upload {
-		margin-bottom: 20px;
+		margin-bottom: 5px;
 	}
 }
 
 @media only screen and (min-width: 360px) {
-	.card {
-		margin-top: 30px;
-	}
 
 	.upload {
 		margin: 10px 0 50px 0;
 	}
 }
 
-@media only screen and (min-width: 390px) {
-	.card {
-		margin-top: 80px;
-	}
-}
-
-@media only screen and (min-width: 414px) {
-	.card {
-		margin-top: 50px;
-	}
-}
-
 @media only screen and (min-width: 768px) {
 	.card {
-		margin: 50px auto 0 auto;
+		margin: 0 auto 0 auto;
 		padding: 30px;
 	}
 
@@ -134,7 +122,7 @@ input[type="file"]::file-selector-button {
 
 	.upload {
 		padding: 15px;
-		margin: 30px 0 100px 0;
+		margin: 30px 0 50px 0;
 	}
 
 	.upload_text {
