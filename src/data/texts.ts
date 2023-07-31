@@ -1,4 +1,4 @@
-export const header_sending = "Easy uploader for huge files";
+export const header_sending = "Upload files";
 export const text_sending =
 	"Sending card: dolor sit amet, consectetur adipiscing elit. Proin condimentum efficitur magna nec porttitor. Etiam.";
 

@@ -14,6 +14,7 @@ const Card = ({ wantSend }: { wantSend: boolean }) => {
 	const [par1, setPar1] = useState<string>("Drop the file");
 	const [par2, setPar2] = useState<string>("or");
 	const [dragging, setDragging] = useState<boolean>(false);
+	const [sent, setSent] = useState<boolean>(true);
 	const drop = useRef<HTMLDivElement>(null);
 
 	const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -83,27 +84,63 @@ const Card = ({ wantSend }: { wantSend: boolean }) => {
 	};
 
 	return (
-		<div className="card">
-			<div className="description">
-				<h1 className="card_header">
-					{wantSend ? header_sending : header_receiving}
-				</h1>
-				<p className="card_text">{wantSend ? text_sending : text_receiving}</p>
-			</div>
-			<div className={"upload " + (dragging && "active")} ref={drop}>
-				<div className="upload_text upload_textUp">{par1}</div>
-				<div className="upload_text">{par2}</div>
+		<>
+			{sent ? (
+				<div className="card">
+					<div className="description">
+						<p className="card_text">Please copy link</p>
+					</div>
 
-				<div className="input_container">
-					{!ifDropped && <input type="file" onChange={handleFileChange} />}
+					<div className="sent">
+						<div className="input_container">
+							<input type="text" />
+						</div>
+
+						<div className="copy_btn">
+							<img
+								className="copy_icon"
+								src="/src/assets/copy.png"
+								alt="copy icon"
+							/>
+						</div>
+					</div>
 				</div>
+			) : (
+				<div className="card">
+					<div className="description">
+						<h1 className="card_header">
+							{wantSend ? header_sending : header_receiving}
+						</h1>
+						<p className="card_text">
+							{wantSend ? text_sending : text_receiving}
+						</p>
+					</div>
 
-				<button className="upload_btn" onClick={handleSendClick}>
-					Send
-				</button>
-			</div>
-		</div>
+					<div className={"upload " + (dragging && "active")} ref={drop}>
+						<div className="upload_text upload_textUp">{par1}</div>
+						<div className="upload_text">{par2}</div>
+
+						<div className="input_container">
+							{!ifDropped && <input type="file" onChange={handleFileChange} />}
+						</div>
+
+						<button className="upload_btn" onClick={handleSendClick}>
+							Send
+						</button>
+					</div>
+				</div>
+			)}
+		</>
 	);
 };
 
 export default Card;
+
+{
+	/* <div className="sent">
+					<p>https://www.robinwieruch.de/typescript-react-usestate/</p>
+					<div className="copy_icon">
+
+					</div>
+				</div> */
+}
