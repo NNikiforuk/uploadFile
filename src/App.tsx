@@ -6,7 +6,7 @@ import Tabs from "./components/Tabs";
 
 function App() {
 	const [wantSend, setWantSend] = useState<boolean>(false);
-	const [sent, setSent] = useState<boolean>(true);
+	const [sent, setSent] = useState<boolean>(false);
 
 	return (
 		<div className="app">

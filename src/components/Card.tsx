@@ -7,6 +7,8 @@ import {
 	header_receiving,
 	text_receiving,
 } from "../data/texts";
+import Sent from "./Sent";
+import Receive from "./Receive";
 
 type Props = {
 	wantSend: boolean;
@@ -90,10 +92,6 @@ const Card = ({ wantSend, sent, setSent }: Props) => {
 		}
 	};
 
-	const handleCopy = () => {
-		navigator.clipboard.writeText(copiedLink);
-	};
-
 	const handleReturn = () => {
 		setSent(false);
 	};
@@ -110,23 +108,7 @@ const Card = ({ wantSend, sent, setSent }: Props) => {
 						/>
 					</div>
 
-					<div className="sent">
-						<p className="card_text">Please copy link</p>
-						<div>
-							<input
-								className="sent_input"
-								type="text"
-								onChange={(e) => setCopiedLink(e.target.value)}
-							/>
-						</div>
-						<div className="copy_btn" onClick={handleCopy}>
-							<img
-								className="copy_icon"
-								src="/src/assets/copy.png"
-								alt="copy icon"
-							/>
-						</div>
-					</div>
+					<Sent setCopiedLink={setCopiedLink} copiedLink={copiedLink} />
 				</div>
 			) : (
 				<div className="card">
@@ -138,19 +120,24 @@ const Card = ({ wantSend, sent, setSent }: Props) => {
 							{wantSend ? text_sending : text_receiving}
 						</p>
 					</div>
+					{wantSend ? (
+						<div className={"upload " + (dragging && "active")} ref={drop}>
+							<div className="upload_text upload_textUp">{par1}</div>
+							<div className="upload_text">{par2}</div>
 
-					<div className={"upload " + (dragging && "active")} ref={drop}>
-						<div className="upload_text upload_textUp">{par1}</div>
-						<div className="upload_text">{par2}</div>
+							<div className="input_container">
+								{!ifDropped && (
+									<input type="file" onChange={handleFileChange} />
+								)}
+							</div>
 
-						<div className="input_container">
-							{!ifDropped && <input type="file" onChange={handleFileChange} />}
+							<button className="upload_btn" onClick={handleSendClick}>
+								Send
+							</button>
 						</div>
-
-						<button className="upload_btn" onClick={handleSendClick}>
-							Send
-						</button>
-					</div>
+					) : (
+						<Receive />
+					)}
 				</div>
 			)}
 		</>
