@@ -20,6 +20,7 @@ const Card = ({ wantSend, sent, setSent }: Props) => {
 	const [par1, setPar1] = useState<string>("Drop the file");
 	const [par2, setPar2] = useState<string>("or");
 	const [dragging, setDragging] = useState<boolean>(false);
+	const [copiedLink, setCopiedLink] = useState<string>("");
 
 	const drop = useRef<HTMLDivElement>(null);
 
@@ -89,6 +90,10 @@ const Card = ({ wantSend, sent, setSent }: Props) => {
 		}
 	};
 
+	const handleCopy = () => {
+		navigator.clipboard.writeText(copiedLink);
+	};
+
 	return (
 		<>
 			{sent ? (
@@ -97,10 +102,14 @@ const Card = ({ wantSend, sent, setSent }: Props) => {
 						<p className="card_text">Please copy link</p>
 
 						<div>
-							<input className="sent_input" type="text" />
+							<input
+								className="sent_input"
+								type="text"
+								onChange={(e) => setCopiedLink(e.target.value)}
+							/>
 						</div>
 
-						<div className="copy_btn">
+						<div className="copy_btn" onClick={handleCopy}>
 							<img
 								className="copy_icon"
 								src="/src/assets/copy.png"
