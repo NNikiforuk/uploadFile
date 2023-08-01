@@ -94,13 +94,24 @@ const Card = ({ wantSend, sent, setSent }: Props) => {
 		navigator.clipboard.writeText(copiedLink);
 	};
 
+	const handleReturn = () => {
+		setSent(false);
+	};
+
 	return (
 		<>
 			{sent ? (
 				<div className="card">
+					<div className="back_container" onClick={handleReturn}>
+						<img
+							className="back_icon"
+							src="/src/assets/back.png"
+							alt="come back icon"
+						/>
+					</div>
+
 					<div className="sent">
 						<p className="card_text">Please copy link</p>
-
 						<div>
 							<input
 								className="sent_input"
@@ -108,7 +119,6 @@ const Card = ({ wantSend, sent, setSent }: Props) => {
 								onChange={(e) => setCopiedLink(e.target.value)}
 							/>
 						</div>
-
 						<div className="copy_btn" onClick={handleCopy}>
 							<img
 								className="copy_icon"
@@ -148,12 +158,3 @@ const Card = ({ wantSend, sent, setSent }: Props) => {
 };
 
 export default Card;
-
-{
-	/* <div className="sent">
-					<p>https://www.robinwieruch.de/typescript-react-usestate/</p>
-					<div className="copy_icon">
-
-					</div>
-				</div> */
-}

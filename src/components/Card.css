@@ -65,6 +65,18 @@
 	align-items: center;
 	cursor: pointer;
 }
+.back_container {
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+	cursor: pointer;
+}
+
+.back_icon {
+	color: rgb(211, 224, 234);
+	width: 25px;
+	padding: 10px;
+}
 
 .copy_icon {
 	width: 25px;
@@ -147,6 +159,10 @@ input[type="file"]::file-selector-button {
 		font-size: 22px;
 	}
 
+	.back_icon {
+		width: 35px;
+	}
+
 	.copy_btn {
 		width: 70px;
 		height: 70px;
@@ -204,6 +220,7 @@ input[type="file"]::file-selector-button {
 		flex-direction: row-reverse;
 		margin: 0;
 		padding: 20px;
+		position: relative;
 	}
 
 	.sent {
@@ -214,6 +231,18 @@ input[type="file"]::file-selector-button {
 		border-radius: 6px;
 		padding: 5px;
 		margin-bottom: 15px;
+	}
+
+	.back_container {
+		position: absolute;
+		top: 0;
+		margin: 10px 20px 0 0;
+	}
+
+	.back_icon {
+		color: rgb(211, 224, 234);
+		width: 25px;
+		padding: 10px;
 	}
 
 	.copy_btn {
