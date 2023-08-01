@@ -8,13 +8,19 @@ import {
 	text_receiving,
 } from "../data/texts";
 
-const Card = ({ wantSend }: { wantSend: boolean }) => {
+type Props = {
+	wantSend: boolean;
+	sent: boolean;
+	setSent: (sent: boolean) => void;
+};
+
+const Card = ({ wantSend, sent, setSent }: Props) => {
 	const [file, setFile] = useState<File>();
 	const [ifDropped, setIfDropped] = useState<boolean>(false);
 	const [par1, setPar1] = useState<string>("Drop the file");
 	const [par2, setPar2] = useState<string>("or");
 	const [dragging, setDragging] = useState<boolean>(false);
-	const [sent, setSent] = useState<boolean>(true);
+
 	const drop = useRef<HTMLDivElement>(null);
 
 	const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -87,13 +93,11 @@ const Card = ({ wantSend }: { wantSend: boolean }) => {
 		<>
 			{sent ? (
 				<div className="card">
-					<div className="description">
-						<p className="card_text">Please copy link</p>
-					</div>
-
 					<div className="sent">
-						<div className="input_container">
-							<input type="text" />
+						<p className="card_text">Please copy link</p>
+
+						<div>
+							<input className="sent_input" type="text" />
 						</div>
 
 						<div className="copy_btn">

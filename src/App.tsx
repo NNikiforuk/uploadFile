@@ -6,13 +6,14 @@ import Tabs from "./components/Tabs";
 
 function App() {
 	const [wantSend, setWantSend] = useState<boolean>(false);
+	const [sent, setSent] = useState<boolean>(true);
 
 	return (
 		<div className="app">
 			<Navbar />
 			<main className="main">
-				<Tabs setWantSend={setWantSend} />
-				<Card wantSend={wantSend} />
+				{!sent && <Tabs setWantSend={setWantSend} />}
+				<Card wantSend={wantSend} sent={sent} setSent={setSent} />
 			</main>
 		</div>
 	);

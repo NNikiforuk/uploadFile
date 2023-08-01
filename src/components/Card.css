@@ -42,7 +42,28 @@
 }
 
 .sent {
+	padding: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
 
+.sent_input {
+	border-radius: 6px;
+	padding: 5px;
+	margin-bottom: 15px;
+}
+
+.copy_btn {
+	background-color: #dd6ba3;
+	border-radius: 50%;
+	width: 40px;
+	height: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
 }
 
 .copy_icon {
@@ -119,6 +140,22 @@ input[type="file"]::file-selector-button {
 		padding: 30px;
 	}
 
+	.sent_input {
+		border-radius: 8px;
+		padding: 10px;
+		width: 350px;
+		font-size: 22px;
+	}
+
+	.copy_btn {
+		width: 70px;
+		height: 70px;
+	}
+
+	.copy_icon {
+		width: 35px;
+	}
+
 	.card_header {
 		font-size: 32px;
 	}
@@ -152,11 +189,50 @@ input[type="file"]::file-selector-button {
 	}
 }
 
+@media only screen and (min-width: 1024px) {
+	.sent_input {
+		width: 500px;
+	}
+
+	.copy_btn {
+		margin-top: 10px;
+	}
+}
+
 @media only screen and (min-width: 1200px) {
 	.card {
 		flex-direction: row-reverse;
 		margin: 0;
 		padding: 20px;
+	}
+
+	.sent {
+		padding: 10px;
+	}
+
+	.sent_input {
+		border-radius: 6px;
+		padding: 5px;
+		margin-bottom: 15px;
+	}
+
+	.copy_btn {
+		background-color: #dd6ba3;
+		border-radius: 50%;
+		width: 40px;
+		height: 40px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		cursor: pointer;
+	}
+
+	.copy_btn:hover {
+		background-color: #c15b8c;
+	}
+
+	.copy_icon {
+		width: 25px;
 	}
 
 	.description {
